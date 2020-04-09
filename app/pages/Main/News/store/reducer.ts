@@ -1,0 +1,23 @@
+import {HOME_ADD} from './type';
+
+interface ReduxState {
+  count: number;
+}
+interface Action {
+  type: any;
+  payload: any;
+}
+const initState = {
+  count: 0,
+};
+
+const reducer = (state: ReduxState = initState, {type, payload}: Action) => {
+  console.warn('payload02', payload);
+  switch (type) {
+    case HOME_ADD:
+      return {...state, count: state.count + payload.count};
+    default:
+      return state;
+  }
+};
+export default reducer;
