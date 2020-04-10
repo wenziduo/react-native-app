@@ -3,10 +3,12 @@ import {connect} from 'react-redux';
 import {ScrollView, Text, View, Button} from 'react-native';
 import action from './store/action';
 import globalAction from '../../../global/store/action';
+import {ModelState} from './store/reducer';
 
 interface InitProps {
-  thisModel?: any;
+  thisModel: ModelState;
   globalModel?: any;
+  dispatch: (params: any) => void;
   addCount: (params: any) => void;
   addGlobalCount: (params: any) => void;
 }
@@ -19,7 +21,8 @@ class MainNewsComponent extends React.Component<InitProps, InitState> {
     this.props.addCount({count: 2});
   };
   handleGlobalAdd = () => {
-    this.props.addGlobalCount({count: 5});
+    // this.props.addGlobalCount({count: 5});
+    this.props.dispatch({type: 'SAGA_GLOBAL_ADD', payload: {count: 8}});
   };
   render() {
     console.warn('this.props.thisModel', this.props.thisModel);
@@ -58,8 +61,9 @@ export default connect(
   }),
   (dispatch, ownProps) => {
     return {
+      dispatch,
       addCount: (params: any) => dispatch(action.add(params)),
-      addGlobalCount: (params: any) => dispatch(globalAction.add(params)),
+      addGlobalCount: (params: any) => dispatch(globalAction.asga_add(params)),
     };
   },
 )(MainNewsComponent);

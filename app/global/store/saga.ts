@@ -2,8 +2,6 @@
  * @author caiwenduio
  * @file 全局的saga
  */
-
-import {delay} from 'redux-saga';
 import {
   take,
   call,
@@ -13,17 +11,16 @@ import {
   takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
-import {GLOBAL_ADD} from './type';
-import action from './action'
+import {SAGA_GLOBAL_ADD} from './type';
+import action from './action';
 
-function* before_add({ type, payload }) {
+function* before_add({type, payload}) {
   console.warn('type', type);
-  console.warn('payload', payload.count);
-  // yield put(action.add())
+  yield put(action.add(payload));
 }
 
 function* listen_add() {
-  yield takeEvery(GLOBAL_ADD, before_add);
+  yield takeEvery(SAGA_GLOBAL_ADD, before_add);
 }
 
 // 使用数组导出
