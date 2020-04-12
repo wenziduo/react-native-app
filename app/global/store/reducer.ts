@@ -17,7 +17,6 @@ const initState = {
 };
 
 const reducer = (state: ReduxState = initState, {type, payload}: Action) => {
-  console.warn('payload02', payload);
   switch (type) {
     case GLOBAL_ADD:
       return {...state, count: state.count + payload.count};

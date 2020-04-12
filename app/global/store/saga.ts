@@ -11,12 +11,13 @@ import {
   takeEvery,
   takeLatest,
 } from 'redux-saga/effects';
+import {NavigationActions} from 'react-navigation';
 import {SAGA_GLOBAL_ADD} from './type';
-import action from './action';
+import {actions} from './action';
 
 function* before_add({type, payload}) {
-  console.warn('type', type);
-  yield put(action.add(payload));
+  // yield put(NavigationActions.navigate({ routeName: 'Detail' }))
+  yield put(actions.add(payload));
 }
 
 function* listen_add() {

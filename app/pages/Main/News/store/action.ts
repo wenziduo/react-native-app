@@ -1,13 +1,18 @@
 import {HOME_ADD} from './type';
 
-const add = (payload: any) => {
-  console.log('payload', payload);
-  return {
-    type: HOME_ADD,
-    payload,
-  };
+export const actions = {
+  add(payload: any) {
+    return {
+      type: HOME_ADD,
+      payload,
+    };
+  },
 };
-
-export default {
-  add,
+export const sagaActions = {
+  add(payload: any) {
+    return {
+      type: HOME_ADD,
+      payload,
+    };
+  },
 };

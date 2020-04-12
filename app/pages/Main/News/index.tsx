@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {ScrollView, Text, View, Button} from 'react-native';
-import action from './store/action';
-import globalAction from '../../../global/store/action';
+import {NavigationActions} from 'react-navigation';
+import {actions} from './store/action';
+import {sagaActions} from '../../../global/store/action';
 import {ModelState} from './store/reducer';
 
 interface InitProps {
@@ -15,14 +16,24 @@ interface InitProps {
 interface InitState {}
 class MainNewsComponent extends React.Component<InitProps, InitState> {
   componentDidMount() {
-    // console.warn(this.props.thisModel.count);
+    console.warn(this.props.thisModel.count);
   }
   handleAdd = () => {
     this.props.addCount({count: 2});
   };
   handleGlobalAdd = () => {
+    // console.warn('999', this.props);
     // this.props.addGlobalCount({count: 5});
-    this.props.dispatch({type: 'SAGA_GLOBAL_ADD', payload: {count: 8}});
+    // NavigationActions.navigate({routeName: 'Detail'});
+    this.props.dispatch(
+      NavigationActions.navigate({
+        routeName: 'Deatil',
+        params: {},
+        action: NavigationActions.navigate({routeName: 'Detail'}),
+      }),
+    );
+    // this.props.navigation.navigate('Detail');
+    // this.props.dispatch({type: 'SAGA_GLOBAL_ADD', payload: {count: 8}});
   };
   render() {
     console.warn('this.props.thisModel', this.props.thisModel);
@@ -62,8 +73,8 @@ export default connect(
   (dispatch, ownProps) => {
     return {
       dispatch,
-      addCount: (params: any) => dispatch(action.add(params)),
-      addGlobalCount: (params: any) => dispatch(globalAction.asga_add(params)),
+      addCount: (params: any) => dispatch(actions.add(params)),
+      addGlobalCount: (params: any) => dispatch(sagaActions.asga_add(params)),
     };
   },
 )(MainNewsComponent);

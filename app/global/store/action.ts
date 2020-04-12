@@ -19,7 +19,5 @@ const asga_add = (payload: any) => {
   };
 };
 
-export default {
-  add,
-  asga_add,
-};
+export const actions = {add};
+export const sagaActions = {asga_add};

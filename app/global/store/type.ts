@@ -3,5 +3,8 @@
  * @file 全局的type
  */
 
-export const GLOBAL_ADD = 'GLOBAL_ADD';
-export const SAGA_GLOBAL_ADD = 'SAGA_GLOBAL_ADD';
+const GLOBAL_ADD = 'GLOBAL_ADD';
+
+const SAGA_GLOBAL_ADD = 'SAGA_GLOBAL_ADD';
+
+export {GLOBAL_ADD, SAGA_GLOBAL_ADD};
