@@ -3,11 +3,17 @@
  * @file 全局的action
  */
 
-import {GLOBAL_ADD, SAGA_GLOBAL_ADD} from './type';
+import {GLOBAL_ADD, SAGA_GLOBAL_ADD, GLOBAL_CHANGEGPAGELOADING} from './type';
 
 const add = (payload: any) => {
   return {
     type: GLOBAL_ADD,
+    payload,
+  };
+};
+const changeGlobalPageLoading = (payload: any) => {
+  return {
+    type: GLOBAL_CHANGEGPAGELOADING,
     payload,
   };
 };
@@ -19,5 +25,5 @@ const asga_add = (payload: any) => {
   };
 };
 
-export const actions = {add};
+export const actions = {add, changeGlobalPageLoading};
 export const sagaActions = {asga_add};

@@ -3,23 +3,32 @@
  * @file 全局的reducer
  */
 
-import {GLOBAL_ADD} from './type';
+import {GLOBAL_ADD, GLOBAL_CHANGEGPAGELOADING} from './type';
 
-interface ReduxState {
+export interface GlobalReduxState {
   count: number;
+  pageLoading: any;
 }
-interface Action {
+export interface Action {
   type: any;
   payload: any;
 }
 const initState = {
   count: 0,
+  pageLoading: {
+    loading: false,
+  },
 };
 
-const reducer = (state: ReduxState = initState, {type, payload}: Action) => {
+const reducer = (
+  state: GlobalReduxState = initState,
+  {type, payload}: Action,
+) => {
   switch (type) {
     case GLOBAL_ADD:
       return {...state, count: state.count + payload.count};
+    case GLOBAL_CHANGEGPAGELOADING:
+      return {...state, pageLoading: {...state.pageLoading, ...payload}};
     default:
       return state;
   }

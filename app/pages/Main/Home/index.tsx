@@ -8,6 +8,9 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
+import {connect} from 'react-redux';
+import {GlobalReduxState} from '../../../global/store/reducer';
+import {actions} from '../../../global/store/action';
 
 const initData = [
   {
@@ -82,7 +85,10 @@ const initData = [
     imgUrl: 'http://wenzi.douerpiao.club/banner001.png',
   },
 ];
-interface InitProps {}
+interface InitProps {
+  global: GlobalReduxState;
+  changeGlobalPageLoading: (params: any) => void;
+}
 interface InitState {
   loading: boolean;
   data: any[];
@@ -96,6 +102,7 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
     };
   }
   componentDidMount() {
+    this.props.changeGlobalPageLoading({loading: true});
     this.setState({loading: true});
     setTimeout(() => {
       this.setState({loading: false, data: initData});
@@ -123,7 +130,18 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
   }
 }
 
-export default MainHomeComponent;
+export default connect(
+  (state: any) => ({
+    globalModel: state.global_reducer,
+  }),
+  (dispatch, ownProps) => {
+    return {
+      dispatch,
+      changeGlobalPageLoading: (params: any) =>
+        dispatch(actions.changeGlobalPageLoading(params)),
+    };
+  },
+)(MainHomeComponent);
 
 const styles = StyleSheet.create({
   itemOuter: {
