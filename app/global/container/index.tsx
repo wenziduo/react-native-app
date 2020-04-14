@@ -1,3 +1,13 @@
-import {Loading as globalPageLoading} from '../../component';
+import React from 'react';
+import {Loading as GlobalPageLoading} from '../../component';
 
-export default [globalPageLoading];
+class GlobalContainer extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <GlobalPageLoading />
+      </React.Fragment>
+    );
+  }
+}
+export default GlobalContainer;

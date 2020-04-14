@@ -103,10 +103,10 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
   }
   componentDidMount() {
     this.props.changeGlobalPageLoading({loading: true});
-    this.setState({loading: true});
     setTimeout(() => {
-      this.setState({loading: false, data: initData});
-    }, 800);
+      this.props.changeGlobalPageLoading({loading: false});
+      this.setState({data: initData});
+    }, 3000);
   }
   render() {
     const {data} = this.state;

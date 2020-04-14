@@ -21,13 +21,7 @@ class MyLoading extends React.Component<InitProps> {
     } = this.props.global;
     return (
       <Modal visible={loading} transparent={true} hardwareAccelerated={true}>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.5)',
-          }}>
+        <View style={styles.loadingBox}>
           <ActivityIndicator size="large" />
           <Text style={styles.loadingTitle}>请稍后...</Text>
         </View>
@@ -40,6 +34,12 @@ const mapStateToProps = (state: any) => ({
 });
 export default connect(mapStateToProps)(MyLoading);
 const styles = StyleSheet.create({
+  loadingBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.2)',
+  },
   loading: {
     display: 'flex',
     flexDirection: 'column',
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.6)',
     flex: 1,
   },
-
   loadingTitle: {
     marginTop: 10,
     fontSize: 14,
