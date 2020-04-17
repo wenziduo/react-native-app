@@ -2,7 +2,7 @@ import React from 'react';
 import {
   ScrollView,
   Text,
-  TouchableOpacity,
+  TouchableHighlight,
   Image,
   StyleSheet,
   View,
@@ -11,6 +11,7 @@ import {
 import {connect} from 'react-redux';
 import {GlobalReduxState} from '../../../global/store/reducer';
 import {actions} from '../../../global/store/action';
+import {windowWidth, globalStyles} from '../../../utils';
 
 const initData = [
   {
@@ -88,6 +89,7 @@ const initData = [
 interface InitProps {
   global: GlobalReduxState;
   changeGlobalPageLoading: (params: any) => void;
+  navigation?: any;
 }
 interface InitState {
   loading: boolean;
@@ -108,20 +110,27 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
       this.setState({data: initData});
     }, 3000);
   }
+  handleGoDetail = () => {
+    this.props.navigation.navigate('Detail');
+  };
   render() {
     const {data} = this.state;
     return (
-      <ScrollView>
+      <ScrollView style={globalStyles.page} keyboardShouldPersistTaps="always">
         <View style={styles.itemOuter}>
           {this.state.loading && <ActivityIndicator />}
           {data.map((item: any) => (
             <View key={item.id}>
-              <TouchableOpacity style={styles.itemStyle}>
-                <Image source={{uri: item.imgUrl}} style={styles.imgStyle} />
-                <View style={styles.itemTextOuter}>
-                  <Text style={styles.itemText}>{item.title}</Text>
+              <TouchableHighlight
+                style={styles.itemStyle}
+                onPress={this.handleGoDetail}>
+                <View>
+                  <Image source={{uri: item.imgUrl}} style={styles.imgStyle} />
+                  <View style={styles.itemTextOuter}>
+                    <Text style={styles.itemText}>{item.title}</Text>
+                  </View>
                 </View>
-              </TouchableOpacity>
+              </TouchableHighlight>
             </View>
           ))}
         </View>
@@ -149,10 +158,14 @@ const styles = StyleSheet.create({
     // backgroundColor: 'salmon',
   },
   itemStyle: {
-    width: 400,
+    width: 320,
     marginLeft: 'auto',
     marginRight: 'auto',
-    elevation: 1.5,
+    // elevation: 1.5,
+    // shadowColor: '#EEE',
+    // shadowOffset: {width: 0, height: 0},
+    // shadowOpacity: 0.3,
+    // shadowRadius: 1.5,
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
@@ -170,6 +183,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingTop: 10,
     paddingBottom: 10,
+    backgroundColor: '#fff',
   },
   itemText: {
     lineHeight: 20,
