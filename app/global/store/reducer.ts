@@ -4,25 +4,27 @@
  */
 
 import {GLOBAL_ADD, GLOBAL_CHANGEGPAGELOADING} from './type';
+import {GlobalReduxState, ActionState} from './definition';
 
-export interface GlobalReduxState {
-  count: number;
-  pageLoading: any;
-}
-export interface Action {
-  type: any;
-  payload: any;
-}
-const initState = {
+const initState: GlobalReduxState = {
   count: 0,
+  // 页面loading
   pageLoading: {
     loading: false,
+  },
+  // 页面statusBar
+  statusBar: {
+    backgroudColor: '#f5f5f5',
+    hidden: false,
+    barStyle: 'dark-content',
+    translucent: false,
+    animated: true,
   },
 };
 
 const reducer = (
   state: GlobalReduxState = initState,
-  {type, payload}: Action,
+  {type, payload}: ActionState,
 ) => {
   switch (type) {
     case GLOBAL_ADD:

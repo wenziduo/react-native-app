@@ -25,61 +25,10 @@ const Stack = createStackNavigator();
 const TabBottom = createBottomTabNavigator();
 const TabTop = createMaterialTopTabNavigator();
 
-const MyTabs = () => {
-  const Feed = () => {
-    return (
-      <ScrollView>
-        <Text>Feed</Text>
-      </ScrollView>
-    );
-  };
-  const Notifications = () => {
-    return (
-      <ScrollView>
-        <Text>Notifications</Text>
-      </ScrollView>
-    );
-  };
-  const Profile = () => {
-    return (
-      <ScrollView>
-        <Text>Profile</Text>
-      </ScrollView>
-    );
-  };
-  return (
-    <TabTop.Navigator
-      initialRouteName="Feed"
-      TopBarOptions={{
-        activeTintColor: '#e91e63',
-        labelStyle: {fontSize: 12},
-        style: {backgroundColor: 'powderblue'},
-      }}>
-      <TabTop.Screen
-        name="Feed"
-        component={Feed}
-        options={{tabBarLabel: 'Feed'}}
-      />
-      <TabTop.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{tabBarLabel: 'Notifications'}}
-      />
-      <TabTop.Screen
-        name="Profile"
-        component={Profile}
-        options={{tabBarLabel: 'Profile'}}
-      />
-    </TabTop.Navigator>
-  );
-};
-
 const RootComponent = () => {
   return (
     <TabBottom.Navigator
       initialRouteName="home"
-      activeTintColor="green"
-      barStyle={{backgroundColor: '#f9f9f9'}}
       tabBarOptions={{
         activeTintColor: 'tomato',
       }}>
@@ -149,11 +98,9 @@ const NavigationContainerComponent: () => React$Node = () => {
         <Stack.Screen
           name="Root"
           component={RootComponent}
-          headerMode={null}
           options={{
             headerShown: false,
             title: '首屏',
-            headerMode: 'none',
           }}
         />
         <Stack.Screen

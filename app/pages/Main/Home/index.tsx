@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {connect} from 'react-redux';
+import {OpacityButton} from '../../../component';
 import {GlobalReduxState} from '../../../global/store/reducer';
 import {actions} from '../../../global/store/action';
 import {windowWidth, globalStyles} from '../../../utils';
@@ -128,6 +129,7 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
                   <Image source={{uri: item.imgUrl}} style={styles.imgStyle} />
                   <View style={styles.itemTextOuter}>
                     <Text style={styles.itemText}>{item.title}</Text>
+                    <OpacityButton title="前往" onPress={() => {}} />
                   </View>
                 </View>
               </TouchableHighlight>
