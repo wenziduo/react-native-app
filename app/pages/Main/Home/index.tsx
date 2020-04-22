@@ -160,14 +160,14 @@ const styles = StyleSheet.create({
     // backgroundColor: 'salmon',
   },
   itemStyle: {
-    width: 320,
+    width: 380,
     marginLeft: 'auto',
     marginRight: 'auto',
     // elevation: 1.5,
     // shadowColor: '#EEE',
     // shadowOffset: {width: 0, height: 0},
     // shadowOpacity: 0.3,
-    // shadowRadius: 1.5,
+    // shadowRadius: 1.5,·
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
