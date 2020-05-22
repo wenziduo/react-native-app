@@ -156,7 +156,6 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
     });
     return (
       <ScrollView style={globalStyles.page} keyboardShouldPersistTaps="always">
-        <A />
         <View style={styles.itemOuter}>
           {this.state.loading && <ActivityIndicator />}
           {data.map((item: any) => (
