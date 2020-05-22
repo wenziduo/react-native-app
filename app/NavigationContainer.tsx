@@ -85,34 +85,38 @@ const RootComponent = () => {
   );
 };
 
-const NavigationContainerComponent: () => React$Node = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Root"
-        headerMode="screen"
-        screenOptions={{
-          headerTintColor: '#333',
-          headerStyle: {backgroundColor: '#fff'},
-        }}>
-        <Stack.Screen
-          name="Root"
-          component={RootComponent}
-          options={{
-            headerShown: false,
-            title: '首屏',
-          }}
-        />
-        <Stack.Screen
-          name="Detail"
-          component={DetailComponent}
-          options={{
-            title: '详情页',
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+class NavigationContainerComponent extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Root"
+            headerMode="screen"
+            screenOptions={{
+              headerTintColor: '#333',
+              headerStyle: {backgroundColor: '#fff'},
+            }}>
+            <Stack.Screen
+              name="Root"
+              component={RootComponent}
+              options={{
+                headerShown: false,
+                title: '首屏',
+              }}
+            />
+            <Stack.Screen
+              name="Detail"
+              component={DetailComponent}
+              options={{
+                title: '详情页',
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </React.Fragment>
+    );
+  }
+}
 
 export default NavigationContainerComponent;
