@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 import {OpacityButton} from '../../../component';
 import {GlobalReduxState} from '../../../global/store/reducer';
 import {actions} from '../../../global/store/action';
-import {windowWidth, globalStyles} from '../../../utils';
+import {setSize, globalStyles} from '../../../utils';
 
 const initData = [
   {
@@ -116,8 +116,47 @@ class MainHomeComponent extends React.Component<InitProps, InitState> {
   };
   render() {
     const {data} = this.state;
+    console.warn('-----------');
+    const styles = StyleSheet.create({
+      itemOuter: {
+        width: '100%',
+        // backgroundColor: 'salmon',
+      },
+      itemStyle: {
+        width: setSize(90),
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        // elevation: 1.5,
+        // shadowColor: '#EEE',
+        // shadowOffset: {width: 0, height: 0},
+        // shadowOpacity: 0.3,
+        // shadowRadius: 1.5,·
+        borderBottomRightRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderTopLeftRadius: 10,
+        marginTop: 20,
+        overflow: 'hidden',
+      },
+      imgStyle: {
+        width: '100%',
+        height: 250,
+        // resizeMode: 'contain',
+      },
+      itemTextOuter: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        backgroundColor: '#fff',
+      },
+      itemText: {
+        lineHeight: 20,
+      },
+    });
     return (
       <ScrollView style={globalStyles.page} keyboardShouldPersistTaps="always">
+        <A />
         <View style={styles.itemOuter}>
           {this.state.loading && <ActivityIndicator />}
           {data.map((item: any) => (
@@ -153,41 +192,3 @@ export default connect(
     };
   },
 )(MainHomeComponent);
-
-const styles = StyleSheet.create({
-  itemOuter: {
-    width: '100%',
-    // backgroundColor: 'salmon',
-  },
-  itemStyle: {
-    width: 380,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    // elevation: 1.5,
-    // shadowColor: '#EEE',
-    // shadowOffset: {width: 0, height: 0},
-    // shadowOpacity: 0.3,
-    // shadowRadius: 1.5,·
-    borderBottomRightRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderTopLeftRadius: 10,
-    marginTop: 20,
-    overflow: 'hidden',
-  },
-  imgStyle: {
-    width: '100%',
-    height: 250,
-    // resizeMode: 'contain',
-  },
-  itemTextOuter: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#fff',
-  },
-  itemText: {
-    lineHeight: 20,
-  },
-});
