@@ -14,7 +14,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import HomeComponent from './pages/Main/Home/Home';
+import HomeComponent from './pages/Main/Home';
 import OrderComponent from './pages/Main/Order';
 import NewsComponent from './pages/Main/News';
 import DetailComponent from './pages/Detail';

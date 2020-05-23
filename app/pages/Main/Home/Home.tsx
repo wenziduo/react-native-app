@@ -79,7 +79,7 @@ class Home extends React.Component<InitProps, InitState> {
     );
   };
   render() {
-    console.log('Home');
+    console.warn('Home.');
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -88,6 +88,7 @@ class Home extends React.Component<InitProps, InitState> {
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
             <Header />
+            <Text>{this.props.num}</Text>
             {global.HermesInternal == null ? null : (
               <View style={styles.engine}>
                 <Text style={styles.footer}>Engine: Hermes</Text>
