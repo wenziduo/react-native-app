@@ -79,6 +79,7 @@ class Home extends React.Component<InitProps, InitState> {
     );
   };
   render() {
+    console.log('Home');
     return (
       <>
         <StatusBar barStyle="dark-content" />

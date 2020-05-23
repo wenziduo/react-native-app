@@ -14,11 +14,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import HomeComponent from './pages/Main/Home';
+import HomeComponent from './pages/Main/Home/Home';
 import OrderComponent from './pages/Main/Order';
 import NewsComponent from './pages/Main/News';
 import DetailComponent from './pages/Detail';
 import MyComponent from './pages/Main/My';
+import ComponentOuter from './ComponentOuter';
 import 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
@@ -34,7 +35,7 @@ const RootComponent = () => {
       }}>
       <TabBottom.Screen
         name="Home"
-        component={HomeComponent}
+        component={ComponentOuter(HomeComponent)}
         options={{
           title: '主页',
           tabBarLabel: '主页',
@@ -45,7 +46,7 @@ const RootComponent = () => {
       />
       <TabBottom.Screen
         name="Order"
-        component={OrderComponent}
+        component={ComponentOuter(OrderComponent)}
         options={{
           tabBarLabel: '订单',
           tabBarIcon: ({color}) => (
@@ -59,7 +60,7 @@ const RootComponent = () => {
       />
       <TabBottom.Screen
         name="News"
-        component={NewsComponent}
+        component={ComponentOuter(NewsComponent)}
         options={{
           tabBarLabel: '消息',
           tabBarIcon: ({color}) => (
@@ -73,7 +74,7 @@ const RootComponent = () => {
       />
       <TabBottom.Screen
         name="My"
-        component={MyComponent}
+        component={ComponentOuter(MyComponent)}
         options={{
           tabBarLabel: '我的',
           tabBarIcon: ({color}) => (
@@ -107,7 +108,7 @@ class NavigationContainerComponent extends React.Component {
             />
             <Stack.Screen
               name="Detail"
-              component={DetailComponent}
+              component={ComponentOuter(DetailComponent)}
               options={{
                 title: '详情页',
               }}

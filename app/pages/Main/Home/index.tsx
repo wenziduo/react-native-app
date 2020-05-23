@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {OpacityButton} from '../../../component';
-import {GlobalReduxState} from '../../../global/store/reducer';
+import {GlobalReduxState} from '../../../global/store/definition';
 import {actions} from '../../../global/store/action';
 import {setSize, globalStyles} from '../../../utils';
 
